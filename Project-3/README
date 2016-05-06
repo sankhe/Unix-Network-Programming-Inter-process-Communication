@@ -1,0 +1,65 @@
+********************************************************************************
+
+COEN236 : UNIX NETWORK PROGRAMMING
+PROJECT 4
+Name: Najuka Sankhe
+********************************************************************************
+
+To run and execute Project4:
+
+1) Please make sure that the server folder is present on the server’s machine and the client folder is present on the client machine.
+
+2) Make clean and make client and server program respectively.
+
+3) To find hostname :
+	a.	Enter “hostname” on the server terminal.
+	b.	This hostname must be provided as command line argument to client.
+
+4) On server terminal please enter :      		./server [tcp/udp]
+ 
+	If you want to run tcp enter tcp 	: 	./server tcp
+	or if you want to run udp enter udp	: 	./server udp
+
+5)	
+	(a)	If you choose to run tcp server, then please run tcp client as follow:		./client tcp <hostname>
+		Eg.    	./client tcp linux60802
+	
+	(b)	If you choose to run udp server, then please run udp client :
+		./client udp <hostname>
+		Eg. 	./client udp linux60802
+
+
+6)	After client program is started, you can use following commands:
+	(a) READ <file_name>
+		To read the contents of the specified file name.
+
+	(b) DELETE <file_name>
+		To delete the specified file name.
+	
+	(c) EXIT
+		This command will send “exit” message to server, so that server can terminated and client process exits.
+
+*******************************************************************************
+
+File’s Submitted :
+1. client folder : client.c and Makefile
+This is the client agent program, it takes the inputs fron user i.e. commands, according to command, selects the desired IPC mechanism.
+If command is non-exit i.e. READ or DELETE, it transmits the message to server via selected IPC and wait for server to send the result.
+Reads the server results via IPC and displays the results to stdout.
+If command is EXIT, client first cleanup the server ( i.e terminate the server process) and terminates.
+
+2. server folder : server.c and Makefile
+This is the server program, it reads the client requests (i.e. non-exit user commands) from the IPC.
+Processes the commands and write the result back to the ipc for the client.
+
+3. xyz.txt abc.txt, file1, file2, protect.txt
+These are sample files perform non-exit command opertations i.e READ and DELETE file.
+Protect.txt is for “permission denied” testcase.
+
+4. Makefile
+Makefile builds executable files from the source code. Makefile is submitted in client as well as in server's folder to build respective executables.
+
+5. README 
+This README file tells how to run the P4 and related information.
+
+*******************************************************************************
