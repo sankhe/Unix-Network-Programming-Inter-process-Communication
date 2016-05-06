@@ -1,0 +1,60 @@
+****************************************************************************************************************************************
+COEN236 : UNIX NETWORK PROGRAMMING
+PROJECT 2
+Name: Najuka Sankhe
+*****************************************************************************************************************************************
+
+Files Submitted :
+
+1. client.c
+This is the client agent program, it takes the inputs fron user i.e. commands, according to command, selects the desired IPC mechanism.
+If command is non-exit i.e. READ or DELETE, it transmits the message to server via selected IPC and wait for server to send the result.
+Reads the server results via IPC and displays the results to stdout.
+If command is EXIT, client first cleanup the server ( i.e terminate the server process) and terminates.
+
+2. server.c
+This is the server program, it reads the client requests (i.e. non-exit user commands) from the IPC.
+Processes the commands and write the result back to the ipc for the client.
+
+3. header.h
+This file consists of comman header file and the message structure. 
+Message Sructure is passed through IPC.
+
+4. abc.txt, file1, file2, file3, file4
+These are sample files perform non-exit command opertations i.e READ and DELETE file.
+
+5. xyz.txt
+This file has permission set to :  chmod 100 xyz.txt
+The file With this permission, helps to test the testcase : "Enter READ command with file name which not having read access."
+
+5. makefile
+Makefile builds executable files from the source code.
+
+6. README
+This README file tells how to run the P2 and related information.
+
+********************************************************************************************************************************************
+
+Commands Used in P2:
+
+1. SWITCH <ipc_mechanism> 
+This allows  to select an IPC mechanism <PIPE|FIFO|SYSMQ|POMQ>.
+The SWITCH <IPC> command should be the first command.
+because IPC mechanism should be selected first, before any non-exit i.e READ and DELETE commands.
+
+2. READ <file_name> 
+This command reads a file with the specified filename.
+
+3. DELETE <file_name>
+This command deletes a file with the specfied filename.
+
+4. EXIT 
+This command, makes client first cleanup the server process (i.e. terminate the server process) and terminates.
+
+***********************************************************************************************************************************************
+
+To run and execute Project2:
+
+>make clean
+> make
+> ./client
